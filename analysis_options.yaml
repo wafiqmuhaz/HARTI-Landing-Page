@@ -1,0 +1,14 @@
+include: package:xetia_lints/lints.yaml
+
+linter:
+  rules:
+    avoid_web_libraries_in_flutter: false
+
+analyzer:
+  exclude:
+    - lib/**.g.dart
+    - bin/**.dart
+    - features/**.dart
+    - lib/src/core/localizations/**
+    - lib/xetia_core_library.config.dart
+    - /**/firebase_options.dart

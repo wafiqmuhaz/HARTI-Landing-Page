@@ -1,0 +1,128 @@
+<!DOCTYPE html><html><head>
+    <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+    <base href="$FLUTTER_BASE_HREF">
+
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="This is view of landing page on HARTI">
+
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="HARTI landing Page">
+    <link rel="apple-touch-icon" href="/thumbnail.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <title>HARTI landing Page</title>
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="title" content="HARTI landing Page">
+    <meta name="keywords" content="Boilerplate,Web,Web Boilerplate">
+    <meta property="og:locale" content="en_JP">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HARTI landing Page">
+
+    <meta property="og:description" content="This is view of landing page on HARTI">
+    <meta property="og:image" content="/favicon.png">
+    <meta property="og:image:secure" content="/favicon.png">
+
+    <!-- google serives client id -->
+    <meta name="google-signin-client_id" content="337813673890-quetrn8t89475logok2pvsgk3da47rud.apps.googleusercontent.com">
+
+    <script>
+      // The value below is injected by flutter build, do not touch.
+      var serviceWorkerVersion = null;
+    </script>
+    <!-- This script adds the flutter initialization JS code -->
+    <script src="flutter.js" defer=""></script>
+
+    <script>
+      window.flutterConfiguration = {
+        canvasKitBaseUrl: "/canvaskit/",
+      };
+    </script>
+  </head>
+  <body>
+    <div id="loading">
+      <style>
+        body {
+          inset: 0;
+          overflow: hidden;
+          margin: 0;
+          padding: 0;
+          position: fixed;
+          background: #000000;
+        }
+
+        #loading {
+          align-items: center;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          width: 100%;
+        }
+
+        #loading img {
+          animation: 1s ease-in-out 0s infinite alternate breathe;
+          opacity: 0.66;
+          transition: opacity 0.4s;
+        }
+
+        #loading.main_done img {
+          opacity: 1;
+        }
+
+        #loading.init_done img {
+          animation: 0.33s ease-in-out 0s 1 forwards zooooom;
+          opacity: 0;
+        }
+      </style>
+      <img src="icons/splash.png" alt="Loading indicator...">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js"></script>
+
+    <script>
+      function completeSplash() {
+        var loading = document.querySelector("#loading");
+        window.setTimeout(function () {
+          loading.remove();
+        }, 200);
+      }
+
+      window.addEventListener("load", function (ev) {
+        var loading = document.querySelector("#loading");
+        // Download main.dart.js
+        _flutter.loader
+          .loadEntrypoint({
+            serviceWorker: {
+              serviceWorkerVersion: serviceWorkerVersion,
+            },
+          })
+          .then(function (engineInitializer) {
+            loading.classList.add("main_done");
+            return engineInitializer.initializeEngine();
+          })
+          .then(function (appRunner) {
+            loading.classList.add("init_done");
+            return appRunner.runApp();
+          });
+      });
+    </script>
+  
+
+</body></html>

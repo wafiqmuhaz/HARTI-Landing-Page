@@ -1,0 +1,169 @@
+name: xetia_boilerplate
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  # DONT REMOVE THIS LINE PACKAGE XETIA
+  xetia_walletconnect:
+    hosted: https://pub.xetia.dev
+    version: ^1.108.7
+
+  xetia_wallet_interface:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.62+7
+
+  xetia_wallet:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.72+7
+
+  xetia_wallet_plugin:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.51+7
+
+  xetia_purchase:
+    hosted: https://pub.xetia.dev
+    version: ^1.98.7
+
+  xetia_chat_interface:
+    hosted: https://pub.xetia.dev
+    version: ^1.78.4
+
+  xetia_chat:
+    hosted: https://pub.xetia.dev
+    version: ^1.97.7
+
+  xetia_notification:
+    hosted: https://pub.xetia.dev
+    version: ^1.86.7
+
+  xetia_pos:
+    hosted: https://pub.xetia.dev
+    version: ^1.84.7
+
+  xetia_auth:
+    hosted: https://pub.xetia.dev
+    version: ^1.96.7
+
+  xetia_auth_interface:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.56+7
+
+  xetia_core:
+    hosted: https://pub.xetia.dev
+    version: ^4.46.2
+
+  xetia_widgets:
+    hosted: https://pub.xetia.dev
+    version: ^1.101.2
+
+  xetia_state:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.55+4
+
+  xetia_utils:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.52+4
+
+  xetia_formatter:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.54+4
+
+  xetia_documentation:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.49+7
+
+  xetia_documentation_interface:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.49+7
+
+  xetia_pubsub_data_source:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.52+2
+
+  xetia_blog_data_source:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.61+2
+
+  xetia_product_data_source:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.85+2
+
+  xetia_user_data_source:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.64+2
+
+  xetia_payment_data_source:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.66+2
+
+  xetia_delivery_data_source:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.60+2
+
+  xetia_location_data_source:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.61+2
+
+  xetia_chat_data_source:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.63+2
+
+  xetia_errors:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.52
+
+  xetia_http:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.62+2
+
+  xetia_models:
+    hosted: https://pub.xetia.dev
+    version: ^1.114.2
+
+  # package boilerplate
+  cupertino_icons: ^1.0.2
+  responsive_builder: ^0.4.2
+  go_router: ^5.1.0
+  model_factory: ^1.3.8
+  provider: ^6.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  yaml: ^3.1.1
+  flutter_lints: ^2.0.0
+  html: ^0.15.0
+
+  xetia_lints:
+    hosted: https://pub.xetia.dev
+    version: ^0.0.3+1
+
+flutter:
+  # generate: true
+
+  uses-material-design: true
+
+  assets:
+    # - assets/icons/
+    - assets/images/
+    - assets/json/
+
+  fonts:
+    - family: NotoSansJP
+      fonts:
+        - asset: fonts/NotoSansJP-Regular.otf
+
+services: harti
