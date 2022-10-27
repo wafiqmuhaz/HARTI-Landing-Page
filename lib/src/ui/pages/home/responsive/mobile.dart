@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:harti_landing_page/src/core/context/localization_context.dart';
+import 'package:harti_landing_page/src/ui/pages/home/widgets/featured_card.dart';
+import 'package:harti_landing_page/src/ui/pages/home/widgets/profile_list.dart';
+import 'package:harti_landing_page/src/ui/pages/home/widgets/service_card.dart';
 import 'package:xetia_widgets/xetia_widgets.dart';
-import 'package:xetia_boilerplate/src/core/context/localization_context.dart';
 
-import '../widgets/featured_card.dart';
-import '../widgets/profile_list.dart';
-import '../widgets/service_card.dart';
-
-class mobileView extends StatelessWidget {
-  const mobileView({
+class MobileView extends StatelessWidget {
+  const MobileView({
     Key? key,
-    required this.width05,
-    required this.width90,
-    required this.halfWidth,
   }) : super(key: key);
-
-  final double width05;
-  final double width90;
-  final double halfWidth;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(width05, 0, width05, 0),
+      padding: EdgeInsets.fromLTRB(
+        context.appSize.width * 0.05,
+        0,
+        context.appSize.width * 0.05,
+        0,
+      ),
       child: ListView(
         children: [
           const SizedBox(
@@ -33,7 +30,7 @@ class mobileView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    width: width90,
+                    width: context.appSize.width * 0.90,
                     height: 325,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
@@ -60,7 +57,7 @@ class mobileView extends StatelessWidget {
                   ),
                   Text(
                     context.l10n.kTitle1,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w400,
                     ),
@@ -69,7 +66,7 @@ class mobileView extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
+                  const Text(
                     'Web3テクノロジーとNFT・IPで、ビジネスに新たな価値を創造します。',
                     style: TextStyle(
                       fontSize: 10,
@@ -126,7 +123,7 @@ class mobileView extends StatelessWidget {
               Expanded(
                 child: Text(
                   context.l10n.kTitle2,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 26,
                   ),
                 ),
@@ -137,27 +134,27 @@ class mobileView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         '文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。',
                         style: TextStyle(fontSize: 10, letterSpacing: 5),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: OutlinedButton(
                           onPressed: () {},
-                          child: Text('View more'),
                           style: OutlinedButton.styleFrom(
                             foregroundColor: context.isDarkTheme
                                 ? Colors.white
                                 : Colors.black,
-                            side: BorderSide(
+                            side: const BorderSide(
                               width: 1,
                               color: Colors.blue,
                             ),
                           ),
+                          child: const Text('View more'),
                         ),
                       ),
                     ],
@@ -191,7 +188,7 @@ class mobileView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 '日本をリードするさまざまな企業から信頼されています。',
                 style: TextStyle(
                   fontSize: 8,
@@ -202,7 +199,7 @@ class mobileView extends StatelessWidget {
               InkWell(
                 onTap: () {},
                 child: Row(
-                  children: [
+                  children: const [
                     Spacer(),
                     Text(
                       'View Project',
@@ -227,12 +224,12 @@ class mobileView extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/images/service.png',
-                width: halfWidth,
+                width: context.appSize.width * 0.50,
               ),
               const SizedBox(
                 height: 50,
               ),
-              ServiceCard(
+              const ServiceCard(
                 image: 'assets/images/service1.png',
                 title: 'NFT Partnerships',
                 desc: 'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するため\nに入れています。この文章はダミーです。',
@@ -240,7 +237,7 @@ class mobileView extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              ServiceCard(
+              const ServiceCard(
                 image: 'assets/images/service2.png',
                 title: 'NFT Platforms',
                 desc: 'この文章はダミーです。文字の大きさ、量、字間、行間等を確認するため\nに入れています。この文章はダミーです。',
@@ -266,9 +263,10 @@ class mobileView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Center(
-                  child: Image.asset(
-                'assets/images/featured.png',
-              )),
+                child: Image.asset(
+                  'assets/images/featured.png',
+                ),
+              ),
             ),
           ),
           const SizedBox(
@@ -280,7 +278,7 @@ class mobileView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   FeaturedCard(
                     image: 'assets/images/featured1.png',
                     desc: '【NTT docomo】アートアクアリウム\nGINZAでのメタバース×NFT企画',
@@ -307,15 +305,15 @@ class mobileView extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: OutlinedButton(
                     onPressed: () {},
-                    child: Text('View More'),
                     style: OutlinedButton.styleFrom(
                       foregroundColor:
                           context.isDarkTheme ? Colors.white : Colors.black,
-                      side: BorderSide(
+                      side: const BorderSide(
                         width: 1,
                         color: Colors.blue,
                       ),
                     ),
+                    child: const Text('View More'),
                   ),
                 ),
               ),
@@ -329,7 +327,7 @@ class mobileView extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/images/profile.png',
-                width: halfWidth,
+                width: context.appSize.width * 0.50,
               ),
               const SizedBox(
                 height: 40,
@@ -341,7 +339,7 @@ class mobileView extends StatelessWidget {
                     'assets/images/company.png',
                     width: MediaQuery.of(context).size.width * 0.4,
                   ),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width * 0.40,
                     child: Column(
                       children: [
@@ -369,18 +367,18 @@ class mobileView extends StatelessWidget {
               Image.asset('assets/images/Rectangle248.png'),
               Center(
                 child: Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
                       Text(
                         context.l10n.kTitle3,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 24,
                           color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text(
+                      const Text(
                         'NFT・Web3プロジェクトに関する\nご依頼やご相談はこちらから',
                         style: TextStyle(
                           fontSize: 10,
@@ -415,7 +413,7 @@ class mobileView extends StatelessWidget {
                             width: context.appSize.width * 0.2,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
+                              children: const [
                                 Text(
                                   'Contact',
                                   style: TextStyle(
@@ -448,7 +446,7 @@ class mobileView extends StatelessWidget {
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text('Follow Us   :  '),
                   Icon(
                     Icons.facebook,
@@ -474,7 +472,7 @@ class mobileView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Why NFT',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -509,7 +507,7 @@ class mobileView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Services',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -547,7 +545,7 @@ class mobileView extends StatelessWidget {
                   fontSize: 12,
                 ),
               ),
-              VerticalDivider(),
+              const VerticalDivider(),
               Text(
                 'プライバシーポリシー',
                 style: TextStyle(

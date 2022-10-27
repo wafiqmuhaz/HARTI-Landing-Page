@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:harti_landing_page/src/core/context/localization_context.dart';
+import 'package:harti_landing_page/src/core/extensions/country_extensions.dart';
+import 'package:harti_landing_page/src/core/localizations/generated/app_localizations.dart';
+import 'package:harti_landing_page/src/models/image_generator.dart';
+import 'package:harti_landing_page/src/ui/pages/home/responsive/desktop.dart';
+import 'package:harti_landing_page/src/ui/pages/home/responsive/mobile.dart';
 import 'package:provider/provider.dart';
-import 'package:xetia_boilerplate/src/core/context/localization_context.dart';
-import 'package:xetia_boilerplate/src/core/extensions/country_extensions.dart';
-import 'package:xetia_boilerplate/src/core/localizations/generated/app_localizations.dart';
-import 'package:xetia_boilerplate/src/models/image_generator.dart';
-import 'package:xetia_boilerplate/src/ui/pages/home/responsive/desktop.dart';
-import 'package:xetia_boilerplate/src/ui/pages/home/responsive/mobile.dart';
 import 'package:xetia_core/xetia_core.dart';
 import 'package:xetia_widgets/xetia_widgets.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
@@ -20,23 +20,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double halfWidth = 0;
-  double width05 = 0;
-  double width90 = 0;
-  double width40 = 0;
-  double width60 = 0;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     final themeModeSetting = context.watch<ThemeModeSetting>();
 
     final localeRepository = context.watch<LocaleSetting>();
-
-    halfWidth = MediaQuery.of(context).size.width * 0.5;
-    width05 = MediaQuery.of(context).size.width * 0.05;
-    width90 = MediaQuery.of(context).size.width * 0.9;
-    width40 = MediaQuery.of(context).size.width * 0.4;
-    width60 = MediaQuery.of(context).size.width * 0.6;
 
     return Scaffold(
       appBar: AppBar(
@@ -93,11 +83,17 @@ class _MyHomePageState extends State<MyHomePage> {
         //     ),
         //   ),
         // ],
-        actions: context.isPhone | context.isSmallPhone
+        actions: (context.appSize.width <= 1000)
             ? null
             : [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _scrollController.animateTo(
+                      _scrollController.position.minScrollExtent,
+                      duration: const Duration(seconds: 2),
+                      curve: Curves.fastOutSlowIn,
+                    );
+                  },
                   child: Text(
                     context.l10n.kWhyNFT,
                     style: Theme.of(context).textTheme.titleSmall,
@@ -127,16 +123,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: OutlinedButton(
-                    onPressed: () {},
-                    child: Text(context.l10n.kContact),
+                    onPressed: () {
+                      _scrollController.animateTo(
+                        _scrollController.position.maxScrollExtent,
+                        duration: const Duration(seconds: 2),
+                        curve: Curves.fastOutSlowIn,
+                      );
+                    },
                     style: OutlinedButton.styleFrom(
                       foregroundColor:
                           context.isDarkTheme ? Colors.white : Colors.black,
-                      side: BorderSide(
+                      side: const BorderSide(
                         width: 1,
                         color: Colors.blue,
                       ),
                     ),
+                    child: Text(context.l10n.kContact),
                   ),
                 ),
                 Padding(
@@ -180,12 +182,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
       ),
-      endDrawer: context.isPhone | context.isSmallPhone
+      endDrawer: (context.appSize.width <= 1000)
           ? Drawer(
               child: ListView(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Image.asset(
                       context.isDarkTheme
                           ? 'assets/images/logo.png'
@@ -234,7 +236,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -285,7 +287,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.all(20.0),
                     child: OutlinedButton(
                       onPressed: () {},
-                      child: Text(context.l10n.kContact),
                       style: OutlinedButton.styleFrom(
                         foregroundColor:
                             context.isDarkTheme ? Colors.white : Colors.black,
@@ -294,6 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Colors.blue,
                         ),
                       ),
+                      child: Text(context.l10n.kContact),
                     ),
                   )
                 ],
@@ -301,18 +303,8 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           : null,
       body: context.isPhone | context.isSmallPhone
-          ? mobileView(
-              halfWidth: halfWidth,
-              width05: width05,
-              width90: width90,
-            )
-          : desktopView(
-              halfWidth: halfWidth,
-              width05: width05,
-              width90: width90,
-              width40: width40,
-              width60: width60,
-            ),
+          ? const MobileView()
+          : DesktopView(scroolController: _scrollController),
     );
   }
 }

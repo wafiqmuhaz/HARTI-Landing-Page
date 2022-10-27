@@ -25,6 +25,7 @@ class _ExampleAuthState extends State<ExampleAuth> {
                     children: [
                       XetiaSignIn(
                         onCompleted: (user) {
+                          // ignore: todo
                           // TODO: insert on completed
                         },
                       ),
@@ -35,6 +36,7 @@ class _ExampleAuthState extends State<ExampleAuth> {
                   padding: const EdgeInsets.all(8.0),
                   child: XetiaSignUp(
                     onCompleted: (user) {
+                      // ignore: todo
                       // TODO: insert on completed
                     },
                   ),

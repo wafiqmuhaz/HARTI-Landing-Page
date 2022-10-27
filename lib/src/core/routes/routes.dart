@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:xetia_boilerplate/src/ui/pages/home/home_page.dart';
+import 'package:harti_landing_page/src/ui/pages/home/home_page.dart';
 
 final routes = GoRouter(
-  initialLocation: '/?title=Boilerplate Project',
+  initialLocation: '/?title=HARTI landing page',
   routes: [
     GoRoute(
       path: '/',

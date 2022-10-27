@@ -1,23 +1,23 @@
-import 'package:xetia_wallet/xetia_wallet.dart';
-import 'package:xetia_wallet_plugin/xetia_wallet_plugin.dart';
-import 'package:xetia_walletconnect/xetia_walletconnect.dart';
-import 'package:xetia_purchase/xetia_purchase.dart';
-import 'package:xetia_chat/xetia_chat.dart';
-import 'package:xetia_notification/xetia_notification.dart';
-// import 'package:xetia_pos/xetia_pos.dart';
-import 'package:xetia_auth/xetia_auth.dart';import 'dart:js' as js;
+import 'dart:js' as js;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:harti_landing_page/firebase_options.dart';
+import 'package:harti_landing_page/flavor.dart';
+import 'package:harti_landing_page/src/core/context/localization_context.dart';
+import 'package:harti_landing_page/src/core/localizations/generated/app_localizations.dart';
+import 'package:harti_landing_page/src/core/routes/routes.dart';
+import 'package:harti_landing_page/src/ui/theme/dark_theme.dart';
+import 'package:harti_landing_page/src/ui/theme/light_theme.dart';
 import 'package:model_factory/model_factory.dart';
-import 'package:xetia_boilerplate/firebase_options.dart';
-import 'package:xetia_boilerplate/flavor.dart';
-import 'package:xetia_boilerplate/src/core/context/localization_context.dart';
-import 'package:xetia_boilerplate/src/core/localizations/generated/app_localizations.dart';
-import 'package:xetia_boilerplate/src/core/routes/routes.dart';
-import 'package:xetia_boilerplate/src/ui/theme/dark_theme.dart';
-import 'package:xetia_boilerplate/src/ui/theme/light_theme.dart';
+import 'package:xetia_auth/xetia_auth.dart';
+import 'package:xetia_chat/xetia_chat.dart';
 import 'package:xetia_core/xetia_core.dart';
+import 'package:xetia_notification/xetia_notification.dart';
+import 'package:xetia_purchase/xetia_purchase.dart';
+import 'package:xetia_wallet/xetia_wallet.dart';
+import 'package:xetia_wallet_plugin/xetia_wallet_plugin.dart';
+import 'package:xetia_walletconnect/xetia_walletconnect.dart';
 import 'package:xetia_widgets/xetia_widgets.dart';
 
 void main() async {
@@ -43,74 +43,89 @@ void main() async {
         },
       ),
       // DONT REMOVE THIS LINE PACKAGE XETIA
-          XetiaWalletPlugin(
-            walletConnectorBuilder: () {
-              return [
-                WallectConnectConnector(),
-                XetiaWalletConnector('HARTi Wallet'),
-              ];
-            },
-          ),
+      XetiaWalletPlugin(
+        walletConnectorBuilder: () {
+          return [
+            WallectConnectConnector(),
+            XetiaWalletConnector('HARTi Wallet'),
+          ];
+        },
+      ),
 
-           XetiaPurchasePlugin(
-            allowShareCart: false,
-            enableCashier: false,
-            onOpenProductDetail: (context, productSlug) {
-              // TODO: insert value on product detail
-            },
-            onOpenStore: (context, entitySlug) {
-              // TODO: insert value on open store 
-            },
-            onSelectShippingAddress: (context) async {
-              // TODO: insert value on select shipping address
-            },
-            onSelectProduct: (context) async {
-              // TODO: insert value on select product
-            },
-            onSelectFriend: (BuildContext context) async {
-              // TODO: insert value on select friend
-              return null;
-            },
-          ),
+      XetiaPurchasePlugin(
+        allowShareCart: false,
+        enableCashier: false,
+        onOpenProductDetail: (context, productSlug) {
+          // ignore: todo
+          // TODO: insert value on product detail
+        },
+        onOpenStore: (context, entitySlug) {
+          // ignore: todo
+          // TODO: insert value on open store
+        },
+        onSelectShippingAddress: (context) async {
+          return null;
 
-           XetiaChatPlugin(
-            chatMessageKinds: [
-              // TODO: available chat message page
-            ],
-            useChatBackground: false,
-            broadcastEnabled: (context) {
-              // TODO: inside broadcast value
-              return false;
-            },
-          ),
-          XetiaNotificationPlugin(
-            onNotificationOpened: (context, data, isAppTerminated) async {
-              // TODO: insert notifiaction opened value
-            },
-          ),
+          // ignore: todo
+          // TODO: insert value on select shipping address
+        },
+        onSelectProduct: (context) async {
+          return null;
 
-          //  XetiaPosPlugin(
-          //   onFindProduct: (BuildContext context, String? entitySlug) async {
-          //     // TODO: insert value find product page
-          //   },
-          //   onPrintReceipt: (
-          //     BuildContext context,
-          //     PurchaseDetail purchaseDetail,
-          //   ) {
-          //     // TODO: insert value on print receipt page
-          //   },
-          // ),
+          // ignore: todo
+          // TODO: insert value on select product
+        },
+        onSelectFriend: (BuildContext context) async {
+          // ignore: todo
+          // TODO: insert value on select friend
+          return null;
+        },
+      ),
 
-          XetiaAuthPlugin(
-              // TODO: insert dynamic link and reset password url value
-            dynamicLinkDomain: '',
-              // TODO: insert dynamic link and reset password url value
-            resetPasswordUrl: '',
-            authMethods: [
-              ...XetiaAuthPlugin.defaultAuthMethods,
-            ],
-          ),
+      XetiaChatPlugin(
+        chatMessageKinds: [
+          // ignore: todo
+          // TODO: available chat message page
+        ],
+        useChatBackground: false,
+        broadcastEnabled: (context) {
+          // ignore: todo
+          // TODO: inside broadcast value
+          return false;
+        },
+      ),
+      XetiaNotificationPlugin(
+        onNotificationOpened: (context, data, isAppTerminated) async {
+          // ignore: todo
+          // TODO: insert notifiaction opened value
+        },
+      ),
 
+      //  XetiaPosPlugin(
+      //   onFindProduct: (BuildContext context, String? entitySlug) async {
+      // ignore: todo
+      //     // TODO: insert value find product page
+      //   },
+      //   onPrintReceipt: (
+      //     BuildContext context,
+      //     PurchaseDetail purchaseDetail,
+      //   ) {
+      // ignore: todo
+      //     // TODO: insert value on print receipt page
+      //   },
+      // ),
+
+      XetiaAuthPlugin(
+        // ignore: todo
+        // TODO: insert dynamic link and reset password url value
+        dynamicLinkDomain: '',
+        // ignore: todo
+        // TODO: insert dynamic link and reset password url value
+        resetPasswordUrl: '',
+        authMethods: [
+          ...XetiaAuthPlugin.defaultAuthMethods,
+        ],
+      ),
     ],
     defaultCountryCode: 'JPN',
     defaultCurrencyCode: 'JPY',

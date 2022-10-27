@@ -12,10 +12,10 @@ class ExampleChat extends StatefulWidget {
 
 class _ExampleChatState extends State<ExampleChat> {
   bool _selectMode = false;
-  int _index = 0;
+  final int _index = 0;
   final _txtSearch = TextEditingController();
   final _scrollController = ScrollController();
-  bool _showNewChatButton = true;
+  final bool _showNewChatButton = true;
   final List<ChatRoom> _selectedIds = [];
 
   @override

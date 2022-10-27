@@ -28,18 +28,18 @@ class ProfileList extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: context.isPhone? 10 : 22,
+                  fontSize: context.isPhone ? 10 : 22,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               CircleAvatar(
-                radius: context.isPhone? 20 : 30,
-                backgroundColor: Color.fromARGB(255, 60, 105, 141),
+                radius: context.isPhone ? 20 : 30,
+                backgroundColor: const Color.fromARGB(255, 60, 105, 141),
                 child: CircleAvatar(
-                  radius: context.isPhone? 20 : 28,
+                  radius: context.isPhone ? 20 : 28,
                   child: Icon(
                     Icons.arrow_forward,
-                    size: context.isPhone? 10 : null,
+                    size: context.isPhone ? 10 : null,
                   ),
                 ),
               ),

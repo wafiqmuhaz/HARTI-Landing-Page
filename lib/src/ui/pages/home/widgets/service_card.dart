@@ -15,7 +15,9 @@ class ServiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: context.isPhone? CrossAxisAlignment.stretch : CrossAxisAlignment.start,
+      crossAxisAlignment: context.isPhone
+          ? CrossAxisAlignment.stretch
+          : CrossAxisAlignment.start,
       children: [
         Image.asset(
           image,
@@ -28,7 +30,7 @@ class ServiceCard extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.4,
           height: 4,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.centerRight,
                 end: Alignment.centerLeft,
@@ -45,7 +47,7 @@ class ServiceCard extends StatelessWidget {
         ),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 28,
           ),
         ),
@@ -54,7 +56,7 @@ class ServiceCard extends StatelessWidget {
         ),
         Text(
           desc,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 10,
           ),
         ),
